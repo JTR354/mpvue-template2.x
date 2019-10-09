@@ -25,8 +25,6 @@ const base64src = function(base64data) {
   })
 }
 
-export default base64src
-
 export function bufferToImage(buffer) {
   return new Promise((resolve, reject) => {
     const format = 'png'
@@ -44,3 +42,4 @@ export function bufferToImage(buffer) {
     })
   })
 }
+export default base64src

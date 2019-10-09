@@ -4,6 +4,7 @@ import {ERR_OK, baseURL} from './config'
 import baseCommon from '@mixins/base-common'
 import base from '@mixins/base'
 import routes from '@utils/routes'
+import wx from 'wx'
 
 // 定义插件
 const AppPlugin = {

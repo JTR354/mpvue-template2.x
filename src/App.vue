@@ -11,7 +11,7 @@ export default {
      * 支付宝(蚂蚁)：mpvue === my, mpvuePlatform === 'my'
      */
   },
-  onShow() {
+  onShow () {
     AppPromise.getInstance(resolve => {     // eslint-disable-line
       console.log('app on show 延迟5s!!!==mpvuePlatform=>', mpvuePlatform)
       setTimeout(() => {

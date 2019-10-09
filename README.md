@@ -19,10 +19,10 @@ npm dev
 npm build
 
 # 指定平台的开发时构建(微信、百度、头条、支付宝)
-npm dev:wx
-npm dev:swan
-npm dev:tt
-npm dev:my
+npm start:wx (dev v1) 环境 版本
+npm start:swan
+npm start:tt
+npm start:my
 
 # 指定平台的打包构建
 npm build:wx

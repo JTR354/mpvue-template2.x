@@ -1,4 +1,3 @@
-import wx from './wx'
 
 export function showLoading (title = '加载中') {
   if (wx.showLoading) {

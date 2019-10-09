@@ -1,9 +1,15 @@
 {
   "pages": [
-    "pages/mine",
-    "pages/home"
+    "pages/home",
+    "pages/mine"
   ],
   "subPackages": [
+    {
+      "root": "package-other/",
+      "pages": [
+        "hello"
+      ]
+    }
   ],
   "preloadRule": {
   },
@@ -24,7 +30,7 @@
       "iconPath": "static/tabs/home.png",
       "selectedIconPath": "static/tabs/home-active.png"
     }, {
-      "text": "我的",
+      "text": "订单",
       "pagePath": "pages/mine",
       "iconPath": "static/tabs/orders.png",
       "selectedIconPath": "static/tabs/orders-active.png"

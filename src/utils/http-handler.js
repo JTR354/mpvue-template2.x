@@ -1,15 +1,38 @@
 import HTTP from '@utils/http'
-import { showLoading, hideLoading, showToast } from '@utils/wechat'
 import { baseURL, ERR_OK, TIME_OUT } from '@utils/config'
+import wx from './wx'
+
+function showLoading (title = '加载中') {
+  if (wx.showLoading) {
+    wx.showLoading({
+      title: title,
+      mask: true
+    })
+  } else {
+    wx.showNavigationBarLoading()
+  }
+}
+
+function hideLoading () {
+  if (wx.hideLoading) {
+    wx.hideLoading()
+  } else {
+    wx.hideNavigationBarLoading()
+  }
+}
+
+function showToast(title, duration = 1500, mask = true, icon = 'none') {
+  if (!title) return
+  wx.showToast({title, icon, duration, mask})
+}
 
 const COMMON_HEADER = {}
-
 HTTP.init(http => {
   http.config.timeout = TIME_OUT
   http.config.headers = COMMON_HEADER
   http.config.baseURL = baseURL.api
 })
-
+//
 HTTP.setCallback({
   // 请求前处理
   beforeRequest({loading = true}) {
@@ -62,8 +85,8 @@ HTTP.setCallback({
     return res
   }
 })
-
-// 错误码处理
+//
+// // 错误码处理
 function errorCodeHandle(code) {
   switch (code) {
     case 10000:

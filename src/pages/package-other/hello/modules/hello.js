@@ -1,10 +1,8 @@
 export const state = {
-  list: [12, 123, 2]
+  todo: true
 }
 
-export const getters = {
-  list: state => state.list
-}
+export const getters = {}
 
 export const mutations = {}
 

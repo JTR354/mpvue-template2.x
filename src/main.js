@@ -5,7 +5,6 @@ import '@utils/app-plugins'
 import '@design'
 import '@utils/http-handler'
 
-Vue.config._mpTrace = process.env !== 'production'
 Vue.config.productionTip = false
 App.mpType = 'app'
 

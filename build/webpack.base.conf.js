@@ -14,6 +14,20 @@ function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
 
+// function getEntry (rootSrc) {
+//   var map = {};
+//   glob.sync(rootSrc + '/pages/**/main.js')
+//   .forEach(file => {
+//     var key = relative(rootSrc, file).replace('.js', '');
+//     map[key] = file;
+//   })
+//    return map;
+// }
+//
+// const appEntry = { app: resolve('./src/main.js') }
+// const pagesEntry = getEntry(resolve('./src'), 'pages/**/main.js')
+// const entry = Object.assign({}, appEntry, pagesEntry)
+
 function getEntry (rootSrc, pattern, packageType) {
   let files = glob.sync(path.resolve(rootSrc, pattern))
   return files.reduce((res, file) => {
@@ -62,7 +76,6 @@ let baseWebpackConfig = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue': 'mpvue',
-      'wx': resolve('src/utils/wx'),
       '@': resolve('.'),
       '@src': resolve('src'),
       '@api': resolve('src/api'),
@@ -73,7 +86,7 @@ let baseWebpackConfig = {
       '@pages': resolve('src/pages'),
       '@utils': resolve('src/utils'),
       '@components': resolve('src/components'),
-      '@flyio': 'flyio/dist/npm/wx'
+      'wx': resolve('src/utils/wx'),
     },
     symlinks: false,
     aliasFields: ['mpvue', 'weapp', 'browser'],
@@ -150,6 +163,9 @@ let baseWebpackConfig = {
       {
         from: 'src/pages/**/*.json',
         to: 'pages/[name].json',
+        transformPath(targetPath, absolutePath) {
+          return utils.pathHandle(targetPath, absolutePath)
+        }
       }
     ]),
     new CopyWebpackPlugin([
@@ -158,14 +174,7 @@ let baseWebpackConfig = {
         to: path.resolve(config.build.assetsRoot, './static'),
         ignore: ['.*']
       }
-    ]),
-    // new CopyWebpackPlugin([
-    //   {
-    //     from: path.resolve(__dirname, '../static/custom-tab-bar'),
-    //     to: path.resolve(config.build.assetsRoot, config.build.assetsSubDirectoryTabBar),
-    //     ignore: ['.*']
-    //   }
-    // ])
+    ])
   ]
 }
 

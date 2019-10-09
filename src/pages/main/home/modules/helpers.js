@@ -1,5 +1,9 @@
-// import {mapState, mapGetters, mapActions, mapMutations} from 'vuex'
-//
-// export const homeComputed = {
-//   ...mapGetters('home', [])
+import {mapGetters} from 'vuex'
+
+export const computed = {
+  ...mapGetters('home', ['list'])
+}
+// export const methods = {
+//   ...mapActions('home', []),
+//   ...mapMutations('home', []),
 // }

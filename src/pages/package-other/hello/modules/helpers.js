@@ -1,9 +1,9 @@
 // import {mapGetters, mapActions, mapMutations} from 'vuex'
 //
 // export const computed = {
-//   ...mapGetters('mine', [])
+//   ...mapGetters('hello', [])
 // }
 // export const methods = {
-//   ...mapActions('mine', []),
-//   ...mapMutations('mine', []),
+//   ...mapActions('hello', []),
+//   ...mapMutations('hello', []),
 // }

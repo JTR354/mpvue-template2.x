@@ -1,14 +1,14 @@
 <template>
-  <div class="home">
-    home
+  <div class="hello">
+    hello
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-  import * as Helpers from './modules/helpers'
-  import API from '@api'
+  // import * as Helpers from './modules/helpers'
+  // import API from '@api'
 
-  const PAGE_NAME = 'HOME'
+  const PAGE_NAME = 'HELLO'
 
   export default {
     name: PAGE_NAME,
@@ -18,14 +18,10 @@
       }
     },
     computed: {
-      ...Helpers.computed
+      // ...Helpers.computed,
     },
     methods: {
       // ...Helpers.methods,
-    },
-    onShow() {
-      console.log(this.list, 'vuex - home')
-      API.Jwt.getToken()
     }
   }
 </script>
@@ -33,7 +29,6 @@
 <style scoped lang="stylus" rel="stylesheet/stylus">
   @import "~@design"
 
-  .home
+  .hello
     width: 100%
-    background yellow
 </style>

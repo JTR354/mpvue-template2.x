@@ -3,7 +3,6 @@ require('./check-versions')()
 process.env.NODE_ENV = 'production'
 process.env.PLATFORM = process.argv[2] || 'wx'
 var getParams = require('./build.utils')
-
 let params = getParams(process.argv)
 process.env.BUILD_ENV = params.environments
 process.env.VERSION = params.versions
@@ -19,7 +18,7 @@ var config = require('../config')
 var webpackConfig = require('./webpack.prod.conf')
 var utils = require('./utils')
 
-var spinner = ora(`building for ${process.env.BUILD_ENV}...`)
+var spinner = ora('building for production...')
 spinner.start()
 
 rm(path.join(config.build.assetsRoot, '*'), err => {
