@@ -1,6 +1,5 @@
 <template>
   <div class="mine">
-    <navigation-bar title="我的"></navigation-bar>
     <button @click="pp">画图</button>
     <div class="panel">
       <img mode="aspectFill" src="/static/images/user.png" alt="" class="h-avatar">
@@ -13,7 +12,6 @@
 
 <script type="text/ecmascript-6">
   // import * as Helpers from './modules/helpers'
-  import NavigationBar from '@components/navigation-bar/navigation-bar'
   import AppPromise from '@utils/app-promise'
   import WePaint from '@components/we-paint/we-paint'
   import {findLast} from 'lodash'
@@ -23,7 +21,6 @@
   export default {
     name: PAGE_NAME,
     components: {
-      NavigationBar,
       WePaint
     },
     data() {

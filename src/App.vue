@@ -13,7 +13,7 @@ export default {
   },
   onShow() {
     AppPromise.getInstance(resolve => {     // eslint-disable-line
-      console.log('app on show 延迟5s!!!')
+      console.log('app on show 延迟5s!!!==mpvuePlatform=>', mpvuePlatform)
       setTimeout(() => {
         resolve(true)
       }, 5000)

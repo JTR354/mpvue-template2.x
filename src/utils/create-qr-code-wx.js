@@ -1,3 +1,4 @@
+import wx from 'wx'
 const fsm = wx.getFileSystemManager()
 const FILE_BASE_NAME = 'tmp_base64src'
 

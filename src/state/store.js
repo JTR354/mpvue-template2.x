@@ -12,10 +12,10 @@ const store = new Vuex.Store({
   plugins: debug ? [createLogger()] : []
 })
 
-for (const moduleName of Object.keys(modules)) {
-  if (modules[moduleName].actions && modules[moduleName].actions.init) {
-    store.dispatch(`${moduleName}/init`)
-  }
-}
+// for (const moduleName of Object.keys(modules)) {
+//   if (modules[moduleName].actions && modules[moduleName].actions.init) {
+//     store.dispatch(`${moduleName}/init`)
+//   }
+// }
 
 export default store

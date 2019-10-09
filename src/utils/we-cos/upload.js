@@ -2,6 +2,7 @@ import COS from './libs/cos-wx-sdk-v5'
 import Upload from './api-upload'
 import { ERR_OK } from '@utils/config'
 import { fileType } from './fileConfig'
+import wx from 'wx'
 
 const SIGN_ERROR = 1
 const CHOICE_ERROR = 2

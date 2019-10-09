@@ -136,7 +136,7 @@ let baseWebpackConfig = {
     // api 统一桥协议方案
     new webpack.DefinePlugin({
       'mpvue': 'global.mpvue',
-      'mpvuePlatform': 'global.mpvuePlatform',
+      'mpvuePlatform': JSON.stringify(process.env.PLATFORM),
       'process.env': env,
       'process.applications': applications,
       'process.versions': versions

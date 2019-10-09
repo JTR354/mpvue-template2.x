@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <navigation-bar title="首页"></navigation-bar>
     home
     <div @click="chooseFilesHandle">cos</div>
   </div>
@@ -9,16 +8,13 @@
 <script type="text/ecmascript-6">
   // import * as Helpers from './modules/helpers'
   import API from '@api'
-  import NavigationBar from '@components/navigation-bar/navigation-bar'
   import chooseFiles from '@utils/we-cos/upload'
 
   const PAGE_NAME = 'HOME'
 
   export default {
     name: PAGE_NAME,
-    components: {
-      NavigationBar
-    },
+    components: {},
     data() {
       return {
         hh: 'heooloa a '

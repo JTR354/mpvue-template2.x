@@ -1,4 +1,4 @@
-import Fly from '@flyio'
+import Fly from './flyio'
 
 class HTTP {
   static getInstance() {
