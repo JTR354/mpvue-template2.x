@@ -6,6 +6,6 @@ after: "subPackages"
     {
       "root": "package-<%= packageName%>/",
       "pages": [
-        "todo"
+        "<%= name _%>"
       ]
     },
