@@ -128,3 +128,20 @@ exports.pathHandle = function (targetPath, absolutePath) {
     return packageName + path.sep + fileName
   }
 }
+
+exports.optimizeAppJson = function(content, path) {
+  if(process.env.PLATFORM !== 'tt') return content
+  const appJson = JSON.parse(content.toString('utf-8'))
+  if(appJson.subPackages && appJson.subPackages.length) {
+    let arr = []
+    appJson.subPackages.forEach((item) => {
+      item.pages && item.pages.forEach((child) => {
+        arr.push(item.root + child)
+      })
+    })
+    appJson.pages = appJson.pages.concat(arr)
+    delete appJson.subPackages
+    delete appJson.preloadRule
+  }
+  return JSON.stringify(appJson, null, 2)
+}

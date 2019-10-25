@@ -3,10 +3,10 @@ to: "src/pages/<%= h.inflection.dasherize(package[0]) %>/<%= h.inflection.dasher
 ---
 // import {mapGetters, mapActions, mapMutations} from 'vuex'
 //
-// export const computed = {
+// export const <%= h.changeCase.camelCase(name)%>Computed = {
 //   ...mapGetters('<%= h.changeCase.camelCase(name.replace('_', ''))%>', [])
 // }
-// export const methods = {
+// export const <%= h.changeCase.camelCase(name)%>Methods = {
 //   ...mapActions('<%= h.changeCase.camelCase(name.replace('_', ''))%>', []),
 //   ...mapMutations('<%= h.changeCase.camelCase(name.replace('_', ''))%>', []),
 // }

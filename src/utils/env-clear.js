@@ -1,4 +1,3 @@
-import wx from 'wx'
 import {baseURL} from '@utils/config'
 
 export function envClear() {

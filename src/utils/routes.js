@@ -6,6 +6,7 @@ export default {
   other: {
     PACKAGE: OTHER,
     HELLO:`${OTHER}/hello`,
+    HELLO_WORLD:`${OTHER}/hello-world`,
     // package-other
   },
   main: {

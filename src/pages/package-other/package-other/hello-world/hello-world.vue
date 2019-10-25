@@ -1,31 +1,31 @@
 <template>
-  <div class="hello">
-    hello
+  <div class="hello-world">
+    <!--<navigation-bar title="world"></navigation-bar>-->
+    hello-world
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   // import * as Helpers from './modules/helpers'
   // import API from '@api'
+  // import NavigationBar from '@components/navigation-bar/navigation-bar'
 
-  const PAGE_NAME = 'HELLO'
+  const PAGE_NAME = 'HELLO_WORLD'
 
   export default {
     name: PAGE_NAME,
-    components: {},
+    components: {
+      // NavigationBar
+    },
     data() {
       return {
       }
     },
     computed: {
-      // ...Helpers.computed,
+      // ...Helpers.helloWorldComputed,
     },
     methods: {
-      // ...Helpers.methods,
-      _beforeUnload() {
-        // 一般用于清理定时器等
-        console.log('hello page before unload')
-      }
+      // ...Helpers.helloWorldMethods,
     }
   }
 </script>
@@ -33,6 +33,6 @@
 <style scoped lang="stylus" rel="stylesheet/stylus">
   @import "~@design"
 
-  .hello
+  .hello-world
     width: 100%
 </style>

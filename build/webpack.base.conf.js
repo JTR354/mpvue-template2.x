@@ -57,6 +57,17 @@ const entry = Object.assign({}, appEntry, pagesEntry, packageEntry)
 var env = process.env.BUILD_ENV
 var versions = process.env.VERSION
 var applications = process.env.APPLICATION
+var DEFINE_PLUGIN = {
+  'mpvue': 'global.mpvue',
+  'wx': 'global.mpvue',
+  'mpvuePlatform': JSON.stringify(process.env.PLATFORM),
+  'process.env': env,
+  'process.applications': applications,
+  'process.versions': versions
+}
+if (process.env.PLATFORM === 'wx') {
+  delete DEFINE_PLUGIN.wx
+}
 
 let baseWebpackConfig = {
   // 如果要自定义生成的 dist 目录里面的文件路径，
@@ -76,17 +87,19 @@ let baseWebpackConfig = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue': 'mpvue',
+      'wx': resolve('src/utils/wx'),
       '@': resolve('.'),
       '@src': resolve('src'),
       '@api': resolve('src/api'),
       '@assets': resolve('src/assets'),
       '@design': resolve('src/design/index.styl'),
+      '@style':resolve('src/design/'),
       '@state': resolve('src/state'),
       '@mixins': resolve('src/mixins'),
       '@pages': resolve('src/pages'),
       '@utils': resolve('src/utils'),
       '@components': resolve('src/components'),
-      'wx': resolve('src/utils/wx'),
+      '@flyio': 'flyio/dist/npm/wx'
     },
     symlinks: false,
     aliasFields: ['mpvue', 'weapp', 'browser'],
@@ -147,17 +160,14 @@ let baseWebpackConfig = {
   },
   plugins: [
     // api 统一桥协议方案
-    new webpack.DefinePlugin({
-      'mpvue': 'global.mpvue',
-      'mpvuePlatform': JSON.stringify(process.env.PLATFORM),
-      'process.env': env,
-      'process.applications': applications,
-      'process.versions': versions
-    }),
+    new webpack.DefinePlugin(DEFINE_PLUGIN),
     new MpvuePlugin(),
     new CopyWebpackPlugin([{
       from: 'src/app.json',
-      to: ''
+      to: '',
+      transform(content, path) {
+        return utils.optimizeAppJson(content, path)
+      }
     }]),
     new CopyWebpackPlugin([
       {
@@ -174,7 +184,14 @@ let baseWebpackConfig = {
         to: path.resolve(config.build.assetsRoot, './static'),
         ignore: ['.*']
       }
-    ])
+    ]),
+    // new CopyWebpackPlugin([
+    //   {
+    //     from: path.resolve(__dirname, '../static/custom-tab-bar'),
+    //     to: path.resolve(config.build.assetsRoot, config.build.assetsSubDirectoryTabBar),
+    //     ignore: ['.*']
+    //   }
+    // ])
   ]
 }
 

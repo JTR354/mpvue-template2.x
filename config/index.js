@@ -52,7 +52,8 @@ module.exports = {
   },
   dev: {
     env: require('./dev.env'),
-    port: {{ port }},
+    // port: {{ port }},
+    port: ~~(Math.random() * (1000 - 4000) + 4000),
     // 在小程序开发者工具中不需要自动打开浏览器
     autoOpenBrowser: false,
     assetsSubDirectory: '',

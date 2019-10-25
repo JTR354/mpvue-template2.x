@@ -1,13 +1,16 @@
 require('./check-versions')()
 
 process.env.NODE_ENV = 'production'
-process.env.PLATFORM = process.argv[2] || 'wx'
+
 var getParams = require('./build.utils')
 let params = getParams(process.argv)
+
 process.env.BUILD_ENV = params.environments
 process.env.VERSION = params.versions
 process.env.APPLICATION = params.applications
-console.log(Object.assign(params, {platform: process.env.PLATFORM}))
+process.env.PLATFORM = params.platforms || 'wx'
+
+console.log(Object.assign(params))
 
 var ora = require('ora')
 var rm = require('rimraf')

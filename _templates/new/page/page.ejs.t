@@ -3,6 +3,7 @@ to: "src/pages/<%= h.inflection.dasherize(package[0]) %>/<%= h.inflection.dasher
 ---
 <template>
   <div class="<%= h.inflection.dasherize(name) %>">
+    <!--<navigation-bar title="world"></navigation-bar>-->
     <%= h.inflection.dasherize(name) %>
   </div>
 </template>
@@ -10,21 +11,24 @@ to: "src/pages/<%= h.inflection.dasherize(package[0]) %>/<%= h.inflection.dasher
 <script type="text/ecmascript-6">
   // import * as Helpers from './modules/helpers'
   // import API from '@api'
+  // import NavigationBar from '@components/navigation-bar/navigation-bar'
 
   const PAGE_NAME = '<%=  h.inflection.dasherize(name).toUpperCase().replace(/-/g, '_')%>'
 
   export default {
     name: PAGE_NAME,
-    components: {},
+    components: {
+      // NavigationBar
+    },
     data() {
       return {
       }
     },
     computed: {
-      // ...Helpers.computed,
+      // ...Helpers.<%= h.changeCase.camelCase(name)%>Computed,
     },
     methods: {
-      // ...Helpers.methods,
+      // ...Helpers.<%= h.changeCase.camelCase(name)%>Methods,
     }
   }
 </script>

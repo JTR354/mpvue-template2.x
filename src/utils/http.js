@@ -1,21 +1,51 @@
-import Fly from './flyio'
+import Fly from '@flyio'
+import qs from 'qs'
 
-function HTTP () {
-  this.http = new Fly()
-  this.callback = {}
-  this.get = function (args) {
+class HTTP {
+  static getInstance() {
+    if (!this.instance) {
+      this.instance = new HTTP()
+    }
+    return this.instance
+  }
+  constructor() {
+    this.http = new Fly()
+    this.callback = {}
+    this.http.interceptors.request.use((request) => {
+      request.body = qs.stringify(request.body)
+      if (typeof this.callback.willRequest === 'function') {
+        request = this.callback.willRequest(request)
+      }
+      return request
+    })
+    // 添加响应拦截器，响应拦截器会在then/catch处理之前执行
+    this.http.interceptors.response.use(
+      (response) => {
+        // 只将请求结果的data字段返回
+        if (typeof this.callback.willResponse === 'function') {
+          response = this.callback.willResponse(response)
+        }
+        return response
+      },
+      (err) => {
+        // 发生网络错误后会走到这里
+        return Promise.resolve(err)
+      }
+    )
+  }
+  get(args) {
     return this._formatRequestData(args, {method: 'GET'})
   }
-  this.post = function(args) {
+  post(args) {
     return this._formatRequestData(args, {method: 'POST'})
   }
-  this.put = function(args) {
+  put(args) {
     return this._formatRequestData(args, {method: 'PUT'})
   }
-  this.delete = function(args) {
+  delete(args) {
     return this._formatRequestData(args, {method: 'DELETE'})
   }
-  this._formatRequestData = function(args, {method}) {
+  _formatRequestData(args, {method}) {
     const {url, data} = args
     if (typeof this.callback.beforeRequest === 'function') {
       this.callback.beforeRequest(args)
@@ -33,26 +63,19 @@ function HTTP () {
     })
   }
   // 设置回调函数
-  this.setCallback = function(callback) {
+  setCallback(callback) {
     this.callback = {...this.callback, ...callback}
   }
   // 设置头部信息
-  this.setHeaders = function(args = {}) {
-    for (let key in args) {
-      this.http.config.headers[key] = args[key]
+  setHeaders(args = {}) {
+    for (let [key, value] of Object.entries(args)) {
+      this.http.config.headers[key] = value
     }
   }
   // 初始化函数
-  this.init = function(fn) {
+  init(fn) {
     fn && fn(this.http)
   }
-}
-
-HTTP.getInstance = function() {
-  if (!this.instance) {
-    this.instance = new HTTP()
-  }
-  return this.instance
 }
 
 // 检查http状态码

@@ -1,30 +1,6 @@
 import HTTP from '@utils/http'
 import { baseURL, ERR_OK, TIME_OUT } from '@utils/config'
-import wx from './wx'
-
-function showLoading (title = '加载中') {
-  if (wx.showLoading) {
-    wx.showLoading({
-      title: title,
-      mask: true
-    })
-  } else {
-    wx.showNavigationBarLoading()
-  }
-}
-
-function hideLoading () {
-  if (wx.hideLoading) {
-    wx.hideLoading()
-  } else {
-    wx.hideNavigationBarLoading()
-  }
-}
-
-function showToast(title, duration = 1500, mask = true, icon = 'none') {
-  if (!title) return
-  wx.showToast({title, icon, duration, mask})
-}
+import {showLoading, hideLoading, showToast} from '@utils/wechat'
 
 const COMMON_HEADER = {}
 HTTP.init(http => {

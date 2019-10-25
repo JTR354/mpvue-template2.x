@@ -5,17 +5,20 @@ var chalk = require('chalk')
 var applications = require('../config/applications') // 应用
 var environments = require('../config/environments') // 环境
 var versions = require('../config/versions') // 版本
+var platforms = require('../config/platforms') // 版本
 
 function handleResolveArgs(arguments) {
   let res = {
     versions: '\'\'',
     applications: '\'platform\'',
-    environments: '\'production\''
+    environments: '\'production\'',
+    platforms : 'wx'
   }
   arguments.forEach(item => {
     setConfig(versions, item, res, 'versions')
     setConfig(applications, item, res, 'applications')
     setConfig(environments, item, res, 'environments')
+    setConfig(platforms, item, res, 'platforms')
   })
   return res
 }
@@ -32,6 +35,9 @@ function setConfig(targetArr, target, res, key) {
         break
       case 'environments':
         res[key] = '\'' + result + '\''
+        break
+      case 'platforms' :
+        res[key] = result
         break
       default:
         break

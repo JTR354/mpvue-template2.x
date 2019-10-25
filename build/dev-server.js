@@ -1,17 +1,19 @@
 require('./check-versions')()
 
-process.env.PLATFORM = process.argv[2] || 'wx'
-var config = require('../config')
-if (!process.env.NODE_ENV) {
-  process.env.NODE_ENV = JSON.parse(config.dev.env.NODE_ENV)
-}
 var getParams = require('./build.utils')
 let params = getParams(process.argv)
 
 process.env.BUILD_ENV = params.environments
 process.env.VERSION = params.versions
 process.env.APPLICATION = params.applications
-console.log(Object.assign(params, {platform: process.env.PLATFORM}))
+process.env.PLATFORM = params.platforms || 'wx'
+
+console.log(Object.assign(params))
+
+var config = require('../config')
+if (!process.env.NODE_ENV) {
+  process.env.NODE_ENV = JSON.parse(config.dev.env.NODE_ENV)
+}
 
 // var opn = require('opn')
 var path = require('path')
@@ -97,21 +99,21 @@ module.exports = new Promise((resolve, reject) => {
   portfinder.basePort = port
   portfinder.getPortPromise()
   .then(newPort => {
-      if (port !== newPort) {
-        console.log(`${port}端口被占用，开启新端口${newPort}`)
+    if (port !== newPort) {
+      console.log(`${port}端口被占用，开启新端口${newPort}`)
+    }
+    var server = app.listen(newPort, 'localhost')
+    // for 小程序的文件保存机制
+    require('webpack-dev-middleware-hard-disk')(compiler, {
+      publicPath: webpackConfig.output.publicPath,
+      quiet: true
+    })
+    resolve({
+      ready: readyPromise,
+      close: () => {
+        server.close()
       }
-      var server = app.listen(newPort, 'localhost')
-      // for 小程序的文件保存机制
-      require('webpack-dev-middleware-hard-disk')(compiler, {
-        publicPath: webpackConfig.output.publicPath,
-        quiet: true
-      })
-      resolve({
-        ready: readyPromise,
-        close: () => {
-          server.close()
-        }
-      })
+    })
   }).catch(error => {
     console.log('没有找到空闲端口，请打开任务管理器杀死进程端口再试', error)
   })

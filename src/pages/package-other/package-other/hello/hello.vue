@@ -22,10 +22,6 @@
     },
     methods: {
       // ...Helpers.methods,
-      _beforeUnload() {
-        // 一般用于清理定时器等
-        console.log('hello page before unload')
-      }
     }
   }
 </script>
