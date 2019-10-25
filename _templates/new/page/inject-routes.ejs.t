@@ -1,6 +1,6 @@
 ---
 to: "src/utils/routes.js"
 inject: true
-before: "// <%= package[0] %>"
+after: "export default"
 ---
-    <%= name.replace(/-/g,'_').toUpperCase() %>:`${<%= package[0].replace(/package-/, '').toUpperCase() %>}/<%= name %>`,
+  <%= h.changeCase.camelCase(name)%>: `/<%= package[0]==='main'?'pages': '' + package[0]%>/<%= name %>`,

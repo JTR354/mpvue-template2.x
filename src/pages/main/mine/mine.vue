@@ -58,7 +58,7 @@
         // chooseFiles().then(res => {
         //   console.log(res)
         // })
-        mpvue.navigateTo({url: this.$routes.other.HELLO})
+        mpvue.navigateTo({url: this.$pages.hello})
       }
     }
   }

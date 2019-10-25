@@ -6,7 +6,7 @@ export default {
   data() {
     return {
       imageUrl: this.$imageUrl,
-      $routes: Routes
+      $pages: Routes
     }
   },
   onLoad() {

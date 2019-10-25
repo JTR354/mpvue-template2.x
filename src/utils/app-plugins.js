@@ -4,7 +4,6 @@ import {ERR_OK, baseURL} from './config'
 import baseCommon from '@mixins/base-common'
 import base from '@mixins/base'
 import routes from '@utils/routes'
-import wx from 'wx'
 
 // 定义插件
 const AppPlugin = {
@@ -14,7 +13,7 @@ const AppPlugin = {
     Vue.prototype.$ERR_OK = ERR_OK
     Vue.prototype.$imageUrl = baseURL.image
     Vue.prototype.$store = store
-    Vue.prototype.$routes = routes
+    Vue.prototype.$pages = routes
   }
 }
 // 使用插件
