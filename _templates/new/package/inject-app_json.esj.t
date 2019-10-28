@@ -4,7 +4,7 @@ inject: true
 after: "subPackages"
 ---
     {
-      "root": "package-<%= packageName%>/",
+      "root": "<%= packageName%>/",
       "pages": [
         "<%= name _%>"
       ]

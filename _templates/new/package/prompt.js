@@ -23,6 +23,9 @@ module.exports = [
         }
       }
       return true
+    },
+    result(val) {
+      return `package-${val}`
     }
   },
   {
