@@ -72,7 +72,7 @@ export const actions = {}
 ```
 
 # 路由常量池：
-> 页面跳转路由请用路由常量 【this.$pages.包名.页面路径】；方便迁移H5项目！！！
+> 页面跳转路由请用路由常量 【this.$pages.页面路径】；方便迁移H5项目！！！
 ```js
 mpvue.navigateTo({url: this.$pages.hello})
 ```
