@@ -50,6 +50,8 @@ npm run new component
 npm run new module
 # 创建utls工具
 npm run new util
+# 创建api工具
+npm run new api
 
 ```
 
