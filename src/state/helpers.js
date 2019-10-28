@@ -1,5 +1,5 @@
 // import {mapGetters, mapActions} from 'vuex'
-// HELP METHODS
+/** HELP METHODS **/
 // export const cartComputed = {
 //   ...mapGetters('cart', ['count'])
 // }
