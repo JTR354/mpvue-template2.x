@@ -7,7 +7,6 @@
     {
       "root": "package-other/",
       "pages": [
-        "hello-world",
         "hello"
       ]
     }
