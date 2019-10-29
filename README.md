@@ -4,18 +4,32 @@
 
 ## Build Setup
 
+
 ``` bash
 # 初始化项目
 zanbo-cli init
 
 # 安装依赖
-npm run update
+npm run install
+
+# 修复百度小程序
+npm run fix:swan
+
+- tips:
+ 组合命令：npm run i:fix
 
 # 开发时构建
-npm start (dev|test|production)【环境=>省略为production】 (tt|swan|wx)【平台】 (v1|v2|v?)【版本】 (platform|xxx)【应用=>省略为platform】
+npm run start env=dev pla=wx ver=1.0.0 app=platfrom
 
 # 打包构建
-npm build dev wx v1
+npm run build env=dev pla=wx ver=1.0.0 app=platfrom
+
+- tips:
+   versions     => ver（版本）    默认值：''           其他值：任意
+   applications => app（应用）    默认值：'platform'   其他值：任意 
+   environments => env（环境）    默认值：'production' 其他值：test测试 dev研发
+   platforms    => pla（平台）    默认值：'wx'         其他值：swan百度 tt字节
+   id           => id （小程序id）默认值：''           其他值：任意 
 
 # 三端同时开发(微信、百度、头条)
 npm run start:dev 研发

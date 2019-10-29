@@ -2,8 +2,7 @@ require('./check-versions')()
 
 process.env.NODE_ENV = 'production'
 
-var getParams = require('./build.utils')
-let params = getParams(process.argv)
+var params = require('./build.utils')
 
 process.env.BUILD_ENV = params.environments
 process.env.VERSION = params.versions

@@ -2,7 +2,9 @@ import HTTP from '@utils/http'
 import { baseURL, ERR_OK, TIME_OUT } from '@utils/config'
 import {showLoading, hideLoading, showToast} from '@utils/wechat'
 
-const COMMON_HEADER = {}
+const COMMON_HEADER = {
+  'V': process.versions
+}
 HTTP.init(http => {
   http.config.timeout = TIME_OUT
   http.config.headers = COMMON_HEADER

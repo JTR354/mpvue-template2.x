@@ -54,9 +54,9 @@ const pagesEntry = getEntry(resolve('./src'), 'pages/main/**/config.js', 'main')
 const packageEntry = getEntry(resolve('./src'), 'pages/package*/**/config.js', 'sub')
 const entry = Object.assign({}, appEntry, pagesEntry, packageEntry)
 
-var env = process.env.BUILD_ENV
-var versions = process.env.VERSION
-var applications = process.env.APPLICATION
+var env = JSON.stringify(process.env.BUILD_ENV)
+var versions = JSON.stringify(process.env.VERSION)
+var applications = JSON.stringify(process.env.APPLICATION)
 var DEFINE_PLUGIN = {
   'mpvue': 'global.mpvue',
   'wx': 'global.mpvue',

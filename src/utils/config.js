@@ -1,5 +1,6 @@
 const env = process.env
-const version = process.versions
+// const version = process.versions
+const version = ''
 
 const DEV = {
   api: 'http://social-shopping-api.jerryf.cn/social-shopping' + version,
