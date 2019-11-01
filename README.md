@@ -131,3 +131,6 @@ AppPromise.getInstance().then(res => {
 - state 全局vuex模块
 - utils 工具类
 - static 静态资源
+
+# 其他提示
+- slot不支持使用
