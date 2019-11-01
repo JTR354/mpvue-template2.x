@@ -1,4 +1,5 @@
 build/*.js
+build/_swan
 config/*.js
 src/utils/we-im/lib/**/*
 src/utils/we-cos/libs/**/*

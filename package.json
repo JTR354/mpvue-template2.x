@@ -1,5 +1,5 @@
 {
-  "name": "{{ project }}",
+  "name": "project",
   "version": "1.0.0",
   "description": "{{ description }}",
   "author": "jtr <jtr354@foxmail.com>",
@@ -19,7 +19,7 @@
     "build:dev": "npm run build:wx env=dev ver= && npm run build:swan env=dev ver= && npm run build:tt env=dev ver=",
     "build:test": " npm run build:wx env=test ver= && npm run build:swan env=test ver= && npm run build:tt env=test ver= ",
     "build:prod": "npm run build:wx ver= && npm run build:swan ver= && npm run build:tt ver=",
-    "fix:swan": "node build/_fix-swan.js",
+    "fix:swan": "node build/_swan",
     "i:fix": "npm install && npm run fix:swan",
     "lint": "eslint --fix --ext .js,.vue src",
     "new": "hygen new"
